@@ -1,0 +1,44 @@
+[
+    {
+        "model": "CV_ables_api.applicant",
+        "pk": 1,
+        "fields": {
+          "user": 2,
+          "github_url": "https://github.com/EugeneTerry",
+          "linkedin_url": "https://www.linkedin.com/in/eugene-terry/",
+          "address": "8585 Storefront Street",
+          "city": "Springfield",
+          "state": "IL",
+          "zipcode": "37001",
+          "phone": "(615)541-5060"
+        }
+      },
+      {
+        "model": "CV_ables_api.applicant",
+        "pk": 2,
+        "fields": {
+          "user": 2,
+          "github_url": "https://github.com/TrinityChristiana",
+          "linkedin_url": "http://trinitychristiana.com/",
+          "address": "6060 Micky Court",
+          "city": "Disney",
+          "state": "FL",
+          "zipcode": "25888",
+          "phone": "(615)232-4565"
+        }
+      },
+      {
+        "model": "CV_ables_api.applicant",
+        "pk": 3,
+        "fields": {
+          "user": 3,
+          "github_url": "https://github.com/drteresavasquez",
+          "linkedin_url": "http://www.drteresavasquez.com/",
+          "address": "200 Boardwalk Blvd.",
+          "city": "Nashville",
+          "state": "TX",
+          "zipcode": "20130",
+          "phone": "(615)547-2013"
+        }
+      }
+]
