@@ -1,3 +1,49 @@
 from django.contrib import admin
+from .models import (
+Applicant,
+Description,
+Jobtype,
+Language,
+Framework,
+Mission,
+Project,
+Education,
+Prospect,
+Experience,
+Vita
+)
 
 # Register your models here.
+admin.site.register(
+    Applicant
+)
+admin.site.register(
+    Description
+)
+admin.site.register(
+    Jobtype
+)
+admin.site.register(
+    Language
+)
+admin.site.register(
+    Framework
+)
+admin.site.register(
+    Mission
+)
+admin.site.register(
+    Project
+)
+admin.site.register(
+    Education
+)
+admin.site.register(
+    Prospect
+)
+admin.site.register(
+    Experience
+)
+admin.site.register(
+    Vita
+)

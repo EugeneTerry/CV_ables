@@ -29,5 +29,7 @@ class Applicant(models.Model):
         max_length=15, null = True
         )
     
+    def __str__(self):
+        return self.user.first_name
     
     
