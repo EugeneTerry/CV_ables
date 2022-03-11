@@ -3,7 +3,7 @@
         "model": "CV_ables_api.applicant",
         "pk": 1,
         "fields": {
-          "user": 2,
+          "user": 1,
           "github_url": "https://github.com/EugeneTerry",
           "linkedin_url": "https://www.linkedin.com/in/eugene-terry/",
           "address": "8585 Storefront Street",
