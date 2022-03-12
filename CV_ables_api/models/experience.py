@@ -10,9 +10,6 @@ class Experience(models.Model):
     job_type = models.ForeignKey(
         Jobtype, models.CASCADE, related_name = "experience"
         )
-    framework = models.ForeignKey(
-        Framework, models.CASCADE, related_name = "experience"
-        )
     job_title = models.CharField(
         max_length= 100, null = True
         )
@@ -23,5 +20,5 @@ class Experience(models.Model):
         max_length= 4, null = True
         )
     end_yr = models.CharField(
-        max_length= 4, null = True
+        max_length= 25, null = True
         )
