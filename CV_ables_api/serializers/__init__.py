@@ -1,0 +1,2 @@
+from .applicant_serializer import ApplicantSerializer
+from .user_serializer import UserSerializer
