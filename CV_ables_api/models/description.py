@@ -7,3 +7,5 @@ class Description(models.Model):
     experience = models.ForeignKey(
         Experience, on_delete=models.CASCADE, related_name = "descriptions"
         )
+    def __str__(self):
+        return self.experience
