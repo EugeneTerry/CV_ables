@@ -6,4 +6,10 @@ class ApplicantSerializer(serializers.ModelSerializer):
     user = UserSerializer(many = False)
     class Meta:
         model = Applicant
-        fields = ('id', 'github_url', 'user' )
+        fields = ('id',
+                  'user',
+                  'portfolio_url',
+                  'linkedin_url',
+                  'github_url',
+                  'city',
+                  'state')
