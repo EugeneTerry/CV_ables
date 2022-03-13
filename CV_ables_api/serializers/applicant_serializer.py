@@ -12,4 +12,5 @@ class ApplicantSerializer(serializers.ModelSerializer):
                   'linkedin_url',
                   'github_url',
                   'city',
-                  'state')
+                  'state'
+                  )

@@ -3,3 +3,7 @@ from .user_serializer import UserSerializer
 from .experience_serializer import ExperienceSerializer, ExperienceRawSerializer
 from .description_serializer import DescriptionSerializer
 from .framework_serializer import FrameworkSerializer
+from .education_serializer import EducationSerializer
+from .language_serializer import LanguageSerializer
+from .jobtype_serializer import JobtypeSerializer
+from .mission_serializer import MissionSerializer
