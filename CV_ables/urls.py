@@ -21,6 +21,11 @@ from CV_ables_api.views import (
     get_profile,
     get_experience_list,
     get_discription_list,
+    get_frameworks_list,
+    get_education_list,
+    get_language_list,
+    get_jobtypes_list,
+    get_mission_list,
     login_user,
     register_user,
     )
@@ -35,5 +40,10 @@ urlpatterns = [
     path('profile', get_profile),
     path('experiences', get_experience_list),
     path('descriptions', get_discription_list),
+    path('frameworks', get_frameworks_list),
+    path('educations', get_education_list),
+    path('languages', get_language_list),
+    path('jobtypes', get_jobtypes_list),
+    path('missions', get_mission_list),
     path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
 ]
