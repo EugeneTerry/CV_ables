@@ -2,3 +2,4 @@ from .applicant_serializer import ApplicantSerializer
 from .user_serializer import UserSerializer
 from .experience_serializer import ExperienceSerializer, ExperienceRawSerializer
 from .description_serializer import DescriptionSerializer
+from .framework_serializer import FrameworkSerializer
