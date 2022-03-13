@@ -8,4 +8,4 @@ class Description(models.Model):
         Experience, on_delete=models.CASCADE, related_name = "descriptions"
         )
     def __str__(self):
-        return self.experience
+        return self.experience.job_title

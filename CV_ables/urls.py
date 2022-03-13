@@ -19,6 +19,8 @@ from django.contrib import admin
 from django.urls import path
 from CV_ables_api.views import (
     get_profile,
+    get_experience_list,
+    get_discription_list,
     login_user,
     register_user,
     )
@@ -31,5 +33,7 @@ urlpatterns = [
     path('register', register_user),
     path('login', login_user),
     path('profile', get_profile),
+    path('experiences', get_experience_list),
+    path('descriptions', get_discription_list),
     path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
 ]
