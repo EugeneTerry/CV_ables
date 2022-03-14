@@ -1,8 +1,8 @@
 from rest_framework import serializers
 from CV_ables_api.models import Mission
-from CV_ables_api.serializers import ApplicantSerializer, JobtypeSerializer
+from CV_ables_api.serializers import ApplicantSmallSerializer, JobtypeSerializer
 class MissionSerializer(serializers.ModelSerializer):
-    applicant = ApplicantSerializer(many=False)
+    applicant = ApplicantSmallSerializer(many=False)
     
     jobtype = JobtypeSerializer(many=False)
     class Meta:
@@ -12,4 +12,11 @@ class MissionSerializer(serializers.ModelSerializer):
             'mission_text',
             'applicant',
             'jobtype'
+        )    
+class MissionSmSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Mission
+        fields = (
+            'id',
+            'mission_text'
         )
