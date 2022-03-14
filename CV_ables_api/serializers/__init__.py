@@ -7,3 +7,4 @@ from .education_serializer import EducationSerializer
 from .language_serializer import LanguageSerializer
 from .jobtype_serializer import JobtypeSerializer
 from .mission_serializer import MissionSerializer
+from .project_serializer import ProjectSerializer

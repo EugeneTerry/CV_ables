@@ -20,9 +20,10 @@ from django.urls import path
 from CV_ables_api.views import (
     FrameworkView,
     JobtypeView,
+    DescriptionView,
+    ProjectView,
     get_profile,
     get_experience_list,
-    get_discription_list,
     get_education_list,
     get_language_list,
     get_mission_list,
@@ -33,6 +34,8 @@ from CV_ables_api.views import (
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'frameworks', FrameworkView, 'framework')
 router.register(r'jobtypes', JobtypeView, 'jobtype')
+router.register(r'descriptions', DescriptionView, 'description')
+router.register(r'projects', ProjectView, 'project')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
@@ -40,7 +43,6 @@ urlpatterns = [
     path('login', login_user),
     path('profile', get_profile),
     path('experiences', get_experience_list),
-    path('descriptions', get_discription_list),
     path('educations', get_education_list),
     path('languages', get_language_list),
     path('missions', get_mission_list),
