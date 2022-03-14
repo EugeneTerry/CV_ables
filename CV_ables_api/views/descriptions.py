@@ -16,15 +16,15 @@ class DescriptionView(ViewSet):
         return Response(serializer.data)
     
     def create(self, request):
-        discription = Description()
+        description = Description()
         experience = Experience.objects.get(pk=request.data['experience_id'])
         
-        discription.description_text = request.data['description_text']
-        discription.experience = experience
+        description.description_text = request.data['description_text']
+        description.experience = experience
         
         try:
-            discription.save()
-            serializer = DescriptionSerializer(discription, context={'request': request})
+            description.save()
+            serializer = DescriptionSerializer(description, context={'request': request})
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         except ValidationError as ex:
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
@@ -32,26 +32,26 @@ class DescriptionView(ViewSet):
     def retrieve(self, request, pk=None):
         try:
             # The `2` at the end of the route becomes `pk`
-            discription = Description.objects.get(pk=pk)
-            serializer = DescriptionSerializer(discription, context={'request': request})
+            description = Description.objects.get(pk=pk)
+            serializer = DescriptionSerializer(description, context={'request': request})
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as ex:
             return HttpResponseServerError(ex)
         
     def update(self, request, pk=None):
-        discription = Description.objects.get(pk=pk)
+        description = Description.objects.get(pk=pk)
         experience = Experience.objects.get(pk=request.data['experience_id'])
         
-        discription.description_text = request.data['description_text']
-        discription.experience = experience
-        discription.save()
+        description.description_text = request.data['description_text']
+        description.experience = experience
+        description.save()
         
         return Response({}, status=status.HTTP_204_NO_CONTENT)
     
     def destroy(self, request, pk=None):
         try:
-            discription = Description.objects.get(pk=pk)
-            discription.delete()
+            description = Description.objects.get(pk=pk)
+            description.delete()
 
             return Response({}, status=status.HTTP_204_NO_CONTENT)
 
