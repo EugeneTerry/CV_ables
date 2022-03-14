@@ -20,12 +20,15 @@ from django.urls import path
 from CV_ables_api.views import (
     FrameworkView,
     JobtypeView,
+    DescriptionView,
+    ProjectView,
+    EducationView,
+    ProspectView,
+    VitaView,
+    ExerienceView,
+    LanguageView,
+    MissionView,
     get_profile,
-    get_experience_list,
-    get_discription_list,
-    get_education_list,
-    get_language_list,
-    get_mission_list,
     login_user,
     register_user,
     )
@@ -33,16 +36,19 @@ from CV_ables_api.views import (
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'frameworks', FrameworkView, 'framework')
 router.register(r'jobtypes', JobtypeView, 'jobtype')
+router.register(r'descriptions', DescriptionView, 'description')
+router.register(r'projects', ProjectView, 'project')
+router.register(r'educations', EducationView, 'education')
+router.register(r'prospects', ProspectView, 'prospect')
+router.register(r'vitas', VitaView, 'vita')
+router.register(r'experiences', ExerienceView, 'experience')
+router.register(r'languages', LanguageView, 'language')
+router.register(r'missions', MissionView, 'mission')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
     path('register', register_user),
     path('login', login_user),
     path('profile', get_profile),
-    path('experiences', get_experience_list),
-    path('descriptions', get_discription_list),
-    path('educations', get_education_list),
-    path('languages', get_language_list),
-    path('missions', get_mission_list),
     path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
 ]

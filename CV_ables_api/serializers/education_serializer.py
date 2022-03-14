@@ -1,8 +1,8 @@
 from rest_framework import serializers
 from CV_ables_api.models import Education
-from CV_ables_api.serializers import ApplicantSerializer
+from CV_ables_api.serializers import ApplicantSmallSerializer
 class EducationSerializer(serializers.ModelSerializer):
-    applicant = ApplicantSerializer(many=False)
+    applicant = ApplicantSmallSerializer(many=False)
     class Meta:
         model = Education
         fields = (

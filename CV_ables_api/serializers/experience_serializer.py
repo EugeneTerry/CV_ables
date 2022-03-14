@@ -1,22 +1,29 @@
 from rest_framework import serializers
 from CV_ables_api.models import Experience
-from CV_ables_api.serializers.applicant_serializer import ApplicantSerializer
-
-
+from CV_ables_api.serializers .applicant_serializer import ApplicantSmallSerializer
+from CV_ables_api.serializers .jobtype_serializer import JobtypeSerializer
 class ExperienceSerializer(serializers.ModelSerializer):
-    applicant = ApplicantSerializer(many=False)
+    applicant = ApplicantSmallSerializer(many=False)
+    job_type = JobtypeSerializer(many=False)
     class Meta:
         model = Experience
         fields = (
             'id',
             'applicant',
-            'company'
+            'job_type',
+            'company',
+            'job_title',
+            'start_yr',
+            'end_yr'
         )
-        
 class ExperienceRawSerializer(serializers.ModelSerializer):
     class Meta:
         model = Experience
         fields = (
             'id',
-            'company'
+            'job_type',
+            'company',
+            'job_title',
+            'start_yr',
+            'end_yr'
         )

@@ -13,4 +13,11 @@ class ApplicantSerializer(serializers.ModelSerializer):
                   'github_url',
                   'city',
                   'state'
+                  )    
+class ApplicantSmallSerializer(serializers.ModelSerializer):
+    user = UserSerializer(many = False)
+    class Meta:
+        model = Applicant
+        fields = ('id',
+                  'user'
                   )

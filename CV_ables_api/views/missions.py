@@ -1,12 +1,13 @@
-from rest_framework.decorators import api_view
-from CV_ables_api import serializers
+from rest_framework.viewsets import ViewSet
 from CV_ables_api.serializers import MissionSerializer
 from rest_framework.response import Response
-from CV_ables_api.models import Mission, mission
+from CV_ables_api.models import Mission
 
-@api_view(['GET'])
-def get_mission_list(self):
-    mission = Mission.objects.all()
-    
-    serializer = MissionSerializer(mission, many=True)
-    return Response(serializer.data)
+class MissionView(ViewSet):
+    def list(self, request):
+        mission = Mission.objects.all()
+        
+        serializer = MissionSerializer(
+            mission, many=True, context={'request': request}
+            )
+        return Response(serializer.data)

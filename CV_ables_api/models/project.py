@@ -1,6 +1,10 @@
 from django.db import models
+from .applicant import Applicant
 
 class Project(models.Model):
+    applicant = models.ForeignKey(
+        Applicant, models.CASCADE, null = True, related_name = "project"
+        )
     title = models.CharField(
         max_length= 25, null = True
         )
