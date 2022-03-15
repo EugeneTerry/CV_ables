@@ -10,7 +10,11 @@ Project,
 Education,
 Prospect,
 Experience,
-Vita
+Vita,
+ExperienceFrame,
+ExperienceLang,
+ExperienceVita,
+EducationVita
 )
 
 # Register your models here.
@@ -46,4 +50,16 @@ admin.site.register(
 )
 admin.site.register(
     Vita
+)
+admin.site.register(
+    ExperienceFrame
+)
+admin.site.register(
+    ExperienceLang
+)
+admin.site.register(
+    ExperienceVita
+)
+admin.site.register(
+    EducationVita
 )
