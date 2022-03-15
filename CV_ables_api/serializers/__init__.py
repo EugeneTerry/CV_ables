@@ -1,4 +1,3 @@
-from operator import imod
 from .applicant_serializer import ApplicantSerializer, ApplicantSmallSerializer
 from .user_serializer import UserSerializer
 from .experience_serializer import ExperienceSerializer, ExperienceRawSerializer
@@ -11,3 +10,7 @@ from .mission_serializer import MissionSerializer, MissionSmSerializer
 from .project_serializer import ProjectSerializer
 from .prospect_serializer import ProspectSerializer, ProspectSmSerializer
 from .vita_serializer import VitaSerializer
+from .experienceframe_serializer import ExperienceFrameSerializer
+from .experiencelang_serializer import ExperienceLangSerializer
+from .experiencevita_serializer import ExperienceVitaSerializer
+from .educationvita_serializer import EducationVitaSerializer
