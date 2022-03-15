@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from CV_ables_api.models import Experience
-from CV_ables_api.serializers .applicant_serializer import ApplicantSmallSerializer
-from CV_ables_api.serializers .jobtype_serializer import JobtypeSerializer
+from CV_ables_api.serializers import ApplicantSmallSerializer
+from .jobtype_serializer import JobtypeSerializer
 class ExperienceSerializer(serializers.ModelSerializer):
     applicant = ApplicantSmallSerializer(many=False)
     job_type = JobtypeSerializer(many=False)
@@ -26,4 +26,4 @@ class ExperienceRawSerializer(serializers.ModelSerializer):
             'job_title',
             'start_yr',
             'end_yr'
-        )
+        )        
