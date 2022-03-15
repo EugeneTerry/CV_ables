@@ -35,7 +35,6 @@ class ExerienceView(ViewSet):
   
   def retrieve(self, request, pk=None):
         try:
-            # The `2` at the end of the route becomes `pk`
             experience = Experience.objects.get(pk=pk)
             serializer = ExperienceSerializer(experience, context={'request': request})
             return Response(serializer.data, status=status.HTTP_200_OK)
@@ -58,7 +57,7 @@ class ExerienceView(ViewSet):
         
         return Response({}, status=status.HTTP_204_NO_CONTENT)
     
-  def destroy(self, request, pk=None):
+  def destroy(self, pk=None):
       try:
           experience = Experience.objects.get(pk=pk)
           experience.delete()
