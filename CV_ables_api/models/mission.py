@@ -9,7 +9,7 @@ class Mission (models.Model):
         Applicant, on_delete=models.CASCADE,
         related_name = "missions"
     )
-    jobtype = models.ForeignKey(
+    job_type = models.ForeignKey(
         Jobtype, on_delete=models.CASCADE,
         related_name = "missions"
     )
