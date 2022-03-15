@@ -6,12 +6,12 @@ class Mission (models.Model):
         max_length= 500, null = True
     )
     applicant = models.ForeignKey(
-        Applicant, on_delete=models.CASCADE,
-        related_name = "missions"
+        Applicant, models.CASCADE,
+        related_name = "mission"
     )
     job_type = models.ForeignKey(
-        Jobtype, on_delete=models.CASCADE,
-        related_name = "missions"
+        Jobtype, models.CASCADE,
+        related_name = "mission"
     )
     def __str__(self):
-        return self.jobtype.label
+        return self.job_type.label
