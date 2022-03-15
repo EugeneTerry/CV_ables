@@ -21,7 +21,6 @@ class MissionView(ViewSet):
         job_type = Jobtype.objects.get(pk=request.data['job_type_id'])
         
         mission.mission_text = request.data['mission_text']
-        
         mission.applicant = applicant
         mission.job_type = job_type
         
@@ -53,7 +52,7 @@ class MissionView(ViewSet):
         
         return Response({}, status=status.HTTP_204_NO_CONTENT)
     
-    def destroy(self, request, pk=None):
+    def destroy(self, pk=None):
         try:
             mission = Mission.objects.get(pk=pk)
             mission.delete()
