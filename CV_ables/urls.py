@@ -28,6 +28,10 @@ from CV_ables_api.views import (
     ExerienceView,
     LanguageView,
     MissionView,
+    EducationVitaView,
+    ExperienceVitaView,
+    ExperienceFrameView,
+    ExperienceLangView,
     get_profile,
     login_user,
     register_user,
@@ -39,8 +43,12 @@ router.register(r'jobtypes', JobtypeView, 'jobtype')
 router.register(r'descriptions', DescriptionView, 'description')
 router.register(r'projects', ProjectView, 'project')
 router.register(r'educations', EducationView, 'education')
+router.register(r'educationvitas', EducationVitaView, 'education_vita')
 router.register(r'prospects', ProspectView, 'prospect')
 router.register(r'vitas', VitaView, 'vita')
+router.register(r'experienceframes', ExperienceFrameView, 'experience_frame')
+router.register(r'experiencevitas', ExperienceVitaView, 'experience_vita')
+router.register(r'experiencelangs', ExperienceLangView, 'experience_lang')
 router.register(r'experiences', ExerienceView, 'experience')
 router.register(r'languages', LanguageView, 'language')
 router.register(r'missions', MissionView, 'mission')

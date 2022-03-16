@@ -14,3 +14,15 @@ class EducationSerializer(serializers.ModelSerializer):
             'diploma',
             'grad_year'
         )
+        
+class EducationRawSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Education
+        fields = (
+            'id',
+            'school_name',
+            'city',
+            'state',
+            'diploma',
+            'grad_year'
+        )
