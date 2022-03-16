@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 
+is_prod = os.getenv('IS_HEROKU', None)
+
+if is_prod is None:
+    import CV_ables.hidden_keys
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,6 +26,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY', ' ')
 
+CORS_ORIGIN_WHITELIST = (
+    "FRONT_END_DOMAIN_URL",
+    "LOCALHOST_DOMAIN_URL",
+)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -68,6 +76,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'CV_ables.urls'
@@ -85,11 +96,42 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
     },
 ]
 
 WSGI_APPLICATION = 'CV_ables.wsgi.application'
+# Add REST Framework settings
+REST_FRAMEWORK = {
+     'DEFAULT_AUTHENTICATION_CLASSES': (
+         'rest_framework.authentication.TokenAuthentication',
+     ),
+     'DEFAULT_PERMISSION_CLASSES': [
+         'rest_framework.permissions.IsAuthenticated',
+ ],
+ 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+ 'PAGE_SIZE': 10
+ }
 
+# Add this for heroku to collect static files
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+
+ # Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+     os.path.join(BASE_DIR, 'static'),
+ )
+
+ # Simplified static file serving.
+ # https://warehouse.python.org/project/whitenoise/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+ # Heroku needs a postgress database. This establishes it as one if in production.
+
+if is_prod:
+    import dj_database_url
+    prod_db = dj_database_url.config(conn_max_age=500)
+    DATABASES['default'].update(prod_db)
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
