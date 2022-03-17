@@ -32,6 +32,7 @@ from CV_ables_api.views import (
     ExperienceVitaView,
     ExperienceFrameView,
     ExperienceLangView,
+    AppicationView,
     get_profile,
     login_user,
     register_user,
@@ -52,6 +53,7 @@ router.register(r'experiencelangs', ExperienceLangView, 'experience_lang')
 router.register(r'experiences', ExerienceView, 'experience')
 router.register(r'languages', LanguageView, 'language')
 router.register(r'missions', MissionView, 'mission')
+router.register(r'applicant', AppicationView, 'applicant')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),

@@ -39,7 +39,7 @@ def login_user(request):
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def register_user(request):
-    '''Handles the creation of a new gamer for authentication
+    '''Handles the creation of a new applicant for authentication
     '''
     # Create a new user by invoking the `create_user` helper method
     # on Django's built-in User model
@@ -52,11 +52,10 @@ def register_user(request):
     )
 
     applicant = Applicant.objects.create(
-        github_url=request.data['github_url'],
         user=new_user
     )
 
     token = Token.objects.create(user=applicant.user)
 
-    data = { 'token': token.key }
+    data = { 'token': token.key, 'valid': True, 'applicant_pk': applicant.id}
     return Response(data, status=status.HTTP_201_CREATED)

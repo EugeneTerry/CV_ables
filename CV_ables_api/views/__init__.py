@@ -1,5 +1,5 @@
 from .auth import login_user, register_user
-from .applicants import get_profile
+from .applicants import get_profile, AppicationView
 from .descriptions import DescriptionView
 from .educations import EducationView
 from .education_vitas import EducationVitaView
