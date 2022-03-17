@@ -102,16 +102,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'CV_ables.wsgi.application'
 # Add REST Framework settings
-REST_FRAMEWORK = {
-     'DEFAULT_AUTHENTICATION_CLASSES': (
-         'rest_framework.authentication.TokenAuthentication',
-     ),
-     'DEFAULT_PERMISSION_CLASSES': [
-         'rest_framework.permissions.IsAuthenticated',
- ],
- 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
- 'PAGE_SIZE': 10
- }
 
 # Add this for heroku to collect static files
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
