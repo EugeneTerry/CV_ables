@@ -11,8 +11,11 @@ class ApplicantSerializer(serializers.ModelSerializer):
                   'portfolio_url',
                   'linkedin_url',
                   'github_url',
+                  'address',
                   'city',
-                  'state'
+                  'state',
+                  'zipcode',
+                  'phone'
                   )    
 class ApplicantSmallSerializer(serializers.ModelSerializer):
     user = UserSerializer(many = False)
