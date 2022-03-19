@@ -58,7 +58,7 @@ class EducationView(ViewSet):
         except Exception as ex:
             return HttpResponseServerError(ex)
         
-    def destroy(self, pk=None):
+    def destroy(self, request, pk=None):
         try:
             education = Education.objects.get(pk=pk)
             education.delete()

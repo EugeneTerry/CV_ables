@@ -63,7 +63,7 @@ class VitaView(ViewSet):
             
             return Response({}, status=status.HTTP_204_NO_CONTENT)
     
-    def destroy(self, pk=None):
+    def destroy(self, request, pk=None):
         try:
             vita = Vita.objects.get(pk=pk)
             vita.delete()

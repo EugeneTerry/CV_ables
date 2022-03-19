@@ -23,6 +23,7 @@ class ExerienceView(ViewSet):
         experience.company = request.data['company']
         experience.start_yr = request.data['start_yr']
         experience.end_yr = request.data['end_yr']
+        experience.duties = request.data['duties']
         
         experience.applicant = applicant
         experience.job_type = jobtype
@@ -51,6 +52,7 @@ class ExerienceView(ViewSet):
         experience.company = request.data['company']
         experience.start_yr = request.data['start_yr']
         experience.end_yr = request.data['end_yr']
+        experience.duties = request.data['duties']
         
         experience.applicant = applicant
         experience.job_type = jobtype
@@ -58,7 +60,7 @@ class ExerienceView(ViewSet):
         
         return Response({}, status=status.HTTP_204_NO_CONTENT)
     
-  def destroy(self, pk=None):
+  def destroy(self, request, pk=None):
       try:
           experience = Experience.objects.get(pk=pk)
           experience.delete()

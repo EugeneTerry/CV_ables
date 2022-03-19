@@ -19,7 +19,7 @@ class MissionView(ViewSet):
     def create(self, request):
         mission = Mission()
         applicant = request.auth.user.applicant
-        job_type = Jobtype.objects.get(pk=request.data['job_type_id'])
+        job_type = Jobtype.objects.get(pk=request.data['jobtype_id'])
         
         mission.mission_text = request.data['mission_text']
         mission.applicant = applicant
@@ -44,7 +44,7 @@ class MissionView(ViewSet):
     def update(self, request, pk=None):
         mission = Mission.objects.get(pk=pk)
         applicant = request.auth.user.applicant
-        job_type = Jobtype.objects.get(pk=request.data['job_type_id'])
+        job_type = Jobtype.objects.get(pk=request.data['jobtype_id'])
         
         mission.mission_text = request.data['mission_text']
         mission.applicant = applicant
@@ -53,7 +53,7 @@ class MissionView(ViewSet):
         
         return Response({}, status=status.HTTP_204_NO_CONTENT)
     
-    def destroy(self, pk=None):
+    def destroy(self, request, pk=None):
         try:
             mission = Mission.objects.get(pk=pk)
             mission.delete()

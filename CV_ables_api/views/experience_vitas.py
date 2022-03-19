@@ -50,7 +50,7 @@ class ExperienceVitaView(ViewSet):
             
             return Response({}, status=status.HTTP_204_NO_CONTENT)
         
-    def destroy(self, pk=None):
+    def destroy(self, request, pk=None):
         try:
             experience_vita = ExperienceVita.objects.get(pk=pk)
             experience_vita.delete()

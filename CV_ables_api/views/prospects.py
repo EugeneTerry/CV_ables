@@ -52,7 +52,7 @@ class ProspectView(ViewSet):
         
         return Response({}, status=status.HTTP_204_NO_CONTENT)
     
-    def destroy(self, pk=None):
+    def destroy(self, request, pk=None):
         try:
             prospect = Prospect.objects.get(pk=pk)
             prospect.delete()

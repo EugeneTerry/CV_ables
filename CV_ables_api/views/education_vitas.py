@@ -52,7 +52,7 @@ class EducationVitaView(ViewSet):
         except Exception as ex:
             return HttpResponseServerError(ex)
         
-    def destroy(self, pk=None):
+    def destroy(self, request, pk=None):
         try:
             education_vita = EducationVita.objects.get(pk=pk)
             education_vita.delete()

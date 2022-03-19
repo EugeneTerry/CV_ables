@@ -22,5 +22,8 @@ class Experience(models.Model):
     end_yr = models.CharField(
         max_length= 25, null = True
         )
+    duties = models.CharField(
+        max_length= 1000, null = True
+        )
     def __str__(self):
         return self.company

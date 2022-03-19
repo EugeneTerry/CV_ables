@@ -59,7 +59,7 @@ class ExperienceFrameView(ViewSet):
             
             return Response({}, status=status.HTTP_204_NO_CONTENT)
         
-    def destroy(self, pk=None):
+    def destroy(self, request, pk=None):
         try:
             experience_frame = ExperienceFrame.objects.get(pk=pk)
             experience_frame.delete()
