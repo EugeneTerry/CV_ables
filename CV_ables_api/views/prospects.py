@@ -7,7 +7,8 @@ from CV_ables_api.models import Prospect, Applicant
 from CV_ables_api.serializers import ProspectSerializer
 class ProspectView(ViewSet):
     def list(self, request):
-        prospect = Prospect.objects.all()
+        applicant = request.auth.user.applicant
+        prospect = Prospect.objects.filter(applicant=applicant)
         
         serializer = ProspectSerializer(
             prospect, many=True, context={'request': request}
@@ -16,7 +17,7 @@ class ProspectView(ViewSet):
     
     def create(self, request):
         prospect = Prospect()
-        applicant = Applicant.objects.get(pk=request.data['applicant_id'])
+        applicant = request.auth.user.applicant
         
         
         prospect.prospect_name = request.data['prospect_name']
@@ -41,7 +42,7 @@ class ProspectView(ViewSet):
         
     def update(self, request, pk=None):
         prospect = Prospect.objects.get(pk=pk)
-        applicant = Applicant.objects.get(pk=request.data['applicant_id'])
+        applicant = request.auth.user.applicant
         
         prospect.prospect_name = request.data['prospect_name']
         prospect.listing_url = request.data['listing_url']

@@ -7,16 +7,17 @@ from CV_ables_api.models import Project, Applicant
 from CV_ables_api.serializers import ProjectSerializer
 class ProjectView(ViewSet):
     def list(self, request):
-        project = Project.objects.all()
-        
+        applicant = request.auth.user.applicant
+        project = Project.objects.filter(applicant=applicant)
+    
         serializer = ProjectSerializer(
             project, many=True, context={'request': request}
             )
         return Response(serializer.data)
-    
+        
     def create(self, request):
         project = Project()
-        applicant = Applicant.objects.get(pk=request.data['applicant_id'])
+        applicant = request.auth.user.applicant
         
         project.title = request.data['title']
         project.github_url = request.data['github_url']
@@ -42,7 +43,7 @@ class ProjectView(ViewSet):
         
     def update(self, request, pk=None):
         project = Project.objects.get(pk=pk)
-        applicant = Applicant.objects.get(pk=request.data['applicant_id'])
+        applicant = request.auth.user.applicant
 
         project.title = request.data['title']
         project.github_url = request.data['github_url']

@@ -8,7 +8,8 @@ from CV_ables_api.serializers import EducationSerializer
 
 class EducationView(ViewSet):
     def list(self, request):
-        education = Education.objects.all()
+        applicant = request.auth.user.applicant
+        education = Education.objects.filter(applicant=applicant)
         
         serializer = EducationSerializer(
             education, many=True, context={'request': request}
@@ -17,7 +18,7 @@ class EducationView(ViewSet):
     
     def create(self, request):
         education = Education()
-        applicant = Applicant.objects.get(pk=request.data['applicant_id'])
+        applicant = request.auth.user.applicant
         
         education.school_name = request.data['school_name']
         education.city = request.data['city']
@@ -35,7 +36,7 @@ class EducationView(ViewSet):
         
     def update(self, request, pk=None):
         education = Education.objects.get(pk=pk)
-        applicant = Applicant.objects.get(pk=request.data['applicant_id'])
+        applicant = request.auth.user.applicant
         
         education.school_name = request.data['school_name']
         education.city = request.data['city']

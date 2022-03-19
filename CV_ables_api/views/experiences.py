@@ -7,15 +7,16 @@ from CV_ables_api.models import Experience, Jobtype, Applicant
 from CV_ables_api.serializers import ExperienceSerializer
 class ExerienceView(ViewSet):
   def list(self, request):
-    experience = Experience.objects.all()
+        applicant = request.auth.user.applicant
+        experience = Experience.objects.filter(applicant=applicant)
     
-    serializer = ExperienceSerializer(
-      experience, many=True, context={'request': request})
-    return Response(serializer.data)
+        serializer = ExperienceSerializer(
+        experience, many=True, context={'request': request})
+        return Response(serializer.data)
   
   def create(self, request):
         experience = Experience()
-        applicant = Applicant.objects.get(pk=request.data['applicant_id'])
+        applicant = request.auth.user.applicant
         jobtype = Jobtype.objects.get(pk=request.data['jobtype_id'])
         
         experience.job_title = request.data['job_title']
@@ -43,7 +44,7 @@ class ExerienceView(ViewSet):
           
   def update(self, request, pk=None):
         experience = Experience.objects.get(pk=pk)
-        applicant = Applicant.objects.get(pk=request.data['applicant_id'])
+        applicant = request.auth.user.applicant
         jobtype = Jobtype.objects.get(pk=request.data['jobtype_id'])
         
         experience.job_title = request.data['job_title']

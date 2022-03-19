@@ -8,16 +8,18 @@ from CV_ables_api.serializers import ExperienceFrameSerializer
 
 class ExperienceFrameView(ViewSet):
     def list(self, request):
-        experience_frame = ExperienceFrame.objects.all()
+            applicant = request.auth.user.applicant
+            experience_frame = ExperienceFrame.objects.filter(applicant=applicant)
         
-        serializer = ExperienceFrameSerializer(
-            experience_frame, many=True, context={'request': request}
-            )
-        return Response(serializer.data)
+            serializer = ExperienceFrameSerializer(
+                experience_frame, many=True, context={'request': request}
+                )
+            return Response(serializer.data)
+        
     def create(self, request):
             experience_frame = ExperienceFrame()
             experience = Experience.objects.get(pk=request.data['experience_id'])
-            applicant = Applicant.objects.get(pk=request.data['applicant_id'])
+            applicant = request.auth.user.applicant
             framework = Framework.objects.get(pk=request.data['framework_id'])
             project = Project.objects.get(pk=request.data['project_id'])
             
@@ -44,7 +46,7 @@ class ExperienceFrameView(ViewSet):
     def update(self, request, pk=None):
             experience_frame = ExperienceFrame.objects.get(pk=pk)
             experience = Experience.objects.get(pk=request.data['experience_id'])
-            applicant = Applicant.objects.get(pk=request.data['applicant_id'])
+            applicant = request.auth.user.applicant
             framework = Framework.objects.get(pk=request.data['framework_id'])
             project = Project.objects.get(pk=request.data['project_id'])
             

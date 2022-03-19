@@ -8,7 +8,8 @@ from CV_ables_api.serializers import MissionSerializer
 
 class MissionView(ViewSet):
     def list(self, request):
-        mission = Mission.objects.all()
+        applicant = request.auth.user.applicant
+        mission = Mission.objects.filter(applicant=applicant)
         
         serializer = MissionSerializer(
             mission, many=True, context={'request': request}
@@ -17,7 +18,7 @@ class MissionView(ViewSet):
     
     def create(self, request):
         mission = Mission()
-        applicant = Applicant.objects.get(pk=request.data['applicant_id'])
+        applicant = request.auth.user.applicant
         job_type = Jobtype.objects.get(pk=request.data['job_type_id'])
         
         mission.mission_text = request.data['mission_text']
@@ -42,7 +43,7 @@ class MissionView(ViewSet):
         
     def update(self, request, pk=None):
         mission = Mission.objects.get(pk=pk)
-        applicant = Applicant.objects.get(pk=request.data['applicant_id'])
+        applicant = request.auth.user.applicant
         job_type = Jobtype.objects.get(pk=request.data['job_type_id'])
         
         mission.mission_text = request.data['mission_text']

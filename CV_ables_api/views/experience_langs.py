@@ -9,7 +9,8 @@ from CV_ables_api.serializers import ExperienceLangSerializer
 
 class ExperienceLangView(ViewSet):
     def list(self, request):
-        experience_lang = ExperienceLang.objects.all()
+        applicant = request.auth.user.applicant
+        experience_lang = ExperienceLang.objects.filter(applicant=applicant)
         
         serializer = ExperienceLangSerializer(
             experience_lang, many=True, context={'request': request}
@@ -19,7 +20,7 @@ class ExperienceLangView(ViewSet):
     def create(self, request):
             experience_lang = ExperienceLang()
             experience = Experience.objects.get(pk=request.data['experience_id'])
-            applicant = Applicant.objects.get(pk=request.data['applicant_id'])
+            applicant = request.auth.user.applicant
             language = Language.objects.get(pk=request.data['language_id'])
             project = Project.objects.get(pk=request.data['project_id'])
             

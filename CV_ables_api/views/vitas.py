@@ -7,7 +7,8 @@ from CV_ables_api.models import Vita, Applicant, Jobtype, Mission, Prospect, vit
 from CV_ables_api.serializers import VitaSerializer
 class VitaView(ViewSet):
     def list(self, request):
-        vita = Vita.objects.all()
+        applicant = request.auth.user.applicant
+        vita = Vita.objects.filter(applicant=applicant)
         
         serializer = VitaSerializer(
             vita, many=True, context={'request': request}
@@ -16,8 +17,8 @@ class VitaView(ViewSet):
     
     def create(self, request):
         vita = Vita()
-        applicant = Applicant.objects.get(pk=request.data['applicant_id'])
-        job_type = Jobtype.objects.get(pk=request.data['job_type_id'])
+        applicant = request.auth.user.applicant
+        job_type = Jobtype.objects.get(pk=request.data['jobtype_id'])
         mission = Mission.objects.get(pk=request.data['mission_id'])
         prospect = Prospect.objects.get(pk=request.data['prospect_id'])
         
@@ -46,8 +47,8 @@ class VitaView(ViewSet):
           
     def update(self, request, pk=None):
             vita = Vita.objects.get(pk=pk)
-            applicant = Applicant.objects.get(pk=request.data['applicant_id'])
-            job_type = Jobtype.objects.get(pk=request.data['job_type_id'])
+            applicant = request.auth.user.applicant
+            job_type = Jobtype.objects.get(pk=request.data['jobtype_id'])
             mission = Mission.objects.get(pk=request.data['mission_id'])
             prospect = Prospect.objects.get(pk=request.data['prospect_id'])
             
