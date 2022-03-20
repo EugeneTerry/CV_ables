@@ -1,5 +1,6 @@
 from django.db import models
 from .applicant import Applicant
+from .prospectstatus import ProspectStatus
 class Prospect(models.Model):
     applicant = models.ForeignKey(
         Applicant, models.CASCADE, related_name = "prospect"
@@ -13,6 +14,9 @@ class Prospect(models.Model):
     markedvita = models.CharField(
         max_length= 100, null = True
         )
+    prospectstatus = models.ForeignKey(
+        ProspectStatus, models.CASCADE, null = True, related_name = "prospect"
+        )    
     notes = models.CharField(
         max_length= 2000, null = True
         )

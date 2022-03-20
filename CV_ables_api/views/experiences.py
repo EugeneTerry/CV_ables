@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseServerError
-from CV_ables_api.models import Experience, Jobtype, Applicant
+from CV_ables_api.models import Experience, Jobtype
 from CV_ables_api.serializers import ExperienceSerializer
 class ExerienceView(ViewSet):
   def list(self, request):
