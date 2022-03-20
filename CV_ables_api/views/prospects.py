@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseServerError
-from CV_ables_api.models import Prospect, Applicant
+from CV_ables_api.models import Prospect, ProspectStatus, prospectstatus
 from CV_ables_api.serializers import ProspectSerializer
 class ProspectView(ViewSet):
     def list(self, request):
@@ -18,12 +18,16 @@ class ProspectView(ViewSet):
     def create(self, request):
         prospect = Prospect()
         applicant = request.auth.user.applicant
+        prospectstatus = ProspectStatus.objects.get(pk=request.data['prospectstatus_id'])
         
         
         prospect.prospect_name = request.data['prospect_name']
         prospect.listing_url = request.data['listing_url']
+        prospect.markedvita = request.data['markedvita']
+        prospect.notes = request.data['notes']
         
         prospect.applicant = applicant
+        prospect.prospectstatus = prospectstatus
         
         try:
             prospect.save()
@@ -42,11 +46,15 @@ class ProspectView(ViewSet):
         
     def update(self, request, pk=None):
         prospect = Prospect.objects.get(pk=pk)
+        prospectstatus = ProspectStatus.objects.get(pk=request.data['prospectstatus_id'])
+
         applicant = request.auth.user.applicant
         
         prospect.prospect_name = request.data['prospect_name']
         prospect.listing_url = request.data['listing_url']
-        
+        prospect.markedvita = request.data['markedvita']
+        prospect.notes = request.data['notes']
+        prospect.prospectstatus = prospectstatus
         prospect.applicant = applicant
         prospect.save()
         

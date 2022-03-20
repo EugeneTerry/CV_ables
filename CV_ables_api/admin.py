@@ -9,6 +9,7 @@ Mission,
 Project,
 Education,
 Prospect,
+ProspectStatus,
 Experience,
 Vita,
 ExperienceFrame,
@@ -44,6 +45,9 @@ admin.site.register(
 )
 admin.site.register(
     Prospect
+)
+admin.site.register(
+    ProspectStatus
 )
 admin.site.register(
     Experience
