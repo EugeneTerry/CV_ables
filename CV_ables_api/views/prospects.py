@@ -27,6 +27,7 @@ class ProspectView(ViewSet):
         prospect.notes = request.data['notes']
         
         prospect.applicant = applicant
+        prospect.prospectstatus = prospectstatus
         
         try:
             prospect.save()
@@ -45,11 +46,15 @@ class ProspectView(ViewSet):
         
     def update(self, request, pk=None):
         prospect = Prospect.objects.get(pk=pk)
+        prospectstatus = ProspectStatus.objects.get(pk=request.data['prospectstatus_id'])
+
         applicant = request.auth.user.applicant
         
         prospect.prospect_name = request.data['prospect_name']
         prospect.listing_url = request.data['listing_url']
-        
+        prospect.markedvita = request.data['markedvita']
+        prospect.notes = request.data['notes']
+        prospect.prospectstatus = prospectstatus
         prospect.applicant = applicant
         prospect.save()
         

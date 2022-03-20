@@ -18,7 +18,7 @@ class Prospect(models.Model):
         ProspectStatus, models.CASCADE, null = True, related_name = "prospect"
         )    
     notes = models.CharField(
-        max_length= 2000, null = True
+        max_length= 2000, null = True, default= None
         )
     def __str__(self):
         return self.prospect_name
