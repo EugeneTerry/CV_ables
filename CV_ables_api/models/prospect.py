@@ -10,5 +10,11 @@ class Prospect(models.Model):
     listing_url = models.URLField(
         max_length=500, null = True
         )
+    markedvita = models.CharField(
+        max_length= 100, null = True
+        )
+    notes = models.CharField(
+        max_length= 2000, null = True
+        )
     def __str__(self):
         return self.prospect_name

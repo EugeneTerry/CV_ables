@@ -14,3 +14,4 @@ from .experienceframe_serializer import ExperienceFrameSerializer
 from .experiencelang_serializer import ExperienceLangSerializer
 from .experiencevita_serializer import ExperienceVitaSerializer
 from .educationvita_serializer import EducationVitaSerializer
+from .prospectstatus_serializer import ProspectStatusSerializer

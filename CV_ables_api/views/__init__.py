@@ -14,3 +14,4 @@ from .experiences import ExerienceView
 from .experience_vitas import ExperienceVitaView
 from .experience_frames import ExperienceFrameView
 from .experience_langs import ExperienceLangView
+from .prospectstatus import ProspectStatusView

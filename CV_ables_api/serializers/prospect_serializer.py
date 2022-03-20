@@ -10,6 +10,8 @@ class ProspectSerializer(serializers.ModelSerializer):
             'id',
             'prospect_name',
             'listing_url',
+            'markedvita',
+            'notes',
             'applicant'
         )
 class ProspectSmSerializer(serializers.ModelSerializer):

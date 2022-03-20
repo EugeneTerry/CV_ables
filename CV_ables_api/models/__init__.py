@@ -13,3 +13,4 @@ from .experience_lang import ExperienceLang
 from .experience_frame import ExperienceFrame
 from .experience_vita import ExperienceVita
 from .vita import Vita
+from .prospectstatus import ProspectStatus

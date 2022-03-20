@@ -25,3 +25,6 @@ VALUES (
     'date_joined:datetime',
     'first_name:varchar(150)'
   );
+
+INSERT INTO CV_ables_api_prospectstatus (id,label)
+VALUES (id:1, lable:'Rejected',);

@@ -22,6 +22,8 @@ class ProspectView(ViewSet):
         
         prospect.prospect_name = request.data['prospect_name']
         prospect.listing_url = request.data['listing_url']
+        prospect.markedvita = request.data['markedvita']
+        prospect.notes = request.data['notes']
         
         prospect.applicant = applicant
         

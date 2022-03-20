@@ -14,7 +14,8 @@ class ExperienceSerializer(serializers.ModelSerializer):
             'company',
             'job_title',
             'start_yr',
-            'end_yr'
+            'end_yr',
+            'duties'
         )
 class ExperienceRawSerializer(serializers.ModelSerializer):
     class Meta:
@@ -25,5 +26,6 @@ class ExperienceRawSerializer(serializers.ModelSerializer):
             'company',
             'job_title',
             'start_yr',
-            'end_yr'
+            'end_yr',
+            'duties'
         )        

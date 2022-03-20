@@ -24,6 +24,7 @@ from CV_ables_api.views import (
     ProjectView,
     EducationView,
     ProspectView,
+    ProspectStatusView,
     VitaView,
     ExerienceView,
     LanguageView,
@@ -46,6 +47,7 @@ router.register(r'projects', ProjectView, 'project')
 router.register(r'educations', EducationView, 'education')
 router.register(r'educationvitas', EducationVitaView, 'education_vita')
 router.register(r'prospects', ProspectView, 'prospect')
+router.register(r'prospectstatuss', ProspectStatusView, 'prospectstatus')
 router.register(r'vitas', VitaView, 'vita')
 router.register(r'experienceframes', ExperienceFrameView, 'experience_frame')
 router.register(r'experiencevitas', ExperienceVitaView, 'experience_vita')
@@ -54,6 +56,7 @@ router.register(r'experiences', ExerienceView, 'experience')
 router.register(r'languages', LanguageView, 'language')
 router.register(r'missions', MissionView, 'mission')
 router.register(r'applicant', AppicationView, 'applicant')
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
