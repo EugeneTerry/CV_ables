@@ -14,7 +14,7 @@ class Vita(models.Model):
         Mission, models.CASCADE, related_name = "vita"
         )
     prospect = models.ForeignKey(
-        Prospect, models.CASCADE, related_name = "vita"
+        Prospect, models.DO_NOTHING, related_name = "vita"
         )
     published = models.BooleanField(
         default = False
