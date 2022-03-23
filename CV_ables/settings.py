@@ -24,12 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', ' ')
+SECRET_KEY = os.getenv('SECRET_KEY')
 
-CORS_ORIGIN_WHITELIST = (
-    "FRONT_END_DOMAIN_URL",
-    "LOCALHOST_DOMAIN_URL",
-)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -61,11 +57,13 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 10
 }
-
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000',
-    'http://127.0.0.1:3000'
-)
+if is_prod:
+    CORS_ORIGIN_WHITELIST=()
+else:
+    CORS_ORIGIN_WHITELIST = (
+        'http://localhost:3000',
+        'http://127.0.0.1:3000'
+    )
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -76,7 +74,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
     'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
@@ -108,9 +105,9 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
  # Extra places for collectstatic to find static files.
-# STATICFILES_DIRS = (
-#      os.path.join(BASE_DIR, 'static'),
-#  )
+STATICFILES_DIRS = (
+     os.path.join(BASE_DIR, 'static'),
+ )
 
  # Simplified static file serving.
  # https://warehouse.python.org/project/whitenoise/
@@ -118,10 +115,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
  # Heroku needs a postgress database. This establishes it as one if in production.
 
-if is_prod:
-    import dj_database_url
-    prod_db = dj_database_url.config(conn_max_age=500)
-    DATABASES['default'].update(prod_db)
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -133,6 +126,10 @@ DATABASES = {
     }
 }
 
+if is_prod:
+    import dj_database_url
+    prod_db = dj_database_url.config(conn_max_age=500)
+    DATABASES['default'].update(prod_db)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
