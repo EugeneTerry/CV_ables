@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['cv-ables.herokuapp.com']
+ALLOWED_HOSTS = ['cv-ables.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -58,7 +58,9 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 if is_prod:
-    CORS_ORIGIN_WHITELIST=()
+    CORS_ORIGIN_WHITELIST=(
+        'https://cv-ables.netlify.app',
+    )
 else:
     CORS_ORIGIN_WHITELIST = (
         'http://localhost:3000',
