@@ -15,7 +15,7 @@ from pathlib import Path
 is_prod = os.getenv('IS_HEROKU', None)
 
 if is_prod is None:
-    import CV_ables.hidden_keys
+    import CV_ables.hidden_key
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
