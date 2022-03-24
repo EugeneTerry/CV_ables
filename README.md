@@ -17,7 +17,7 @@ Users will be able to input their professional information and the information f
   
   [ERD](https://dbdiagram.io/d/62237c3854f9ad109a651a5d/)
   
-  [DEPLOIED SITE] (https://cv-ables.netlify.app/)
+  [DEPLOYMENT](https://cv-ables.netlify.app/)
 ### Screenshots
   
 <p align="center">
