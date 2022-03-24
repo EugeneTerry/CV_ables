@@ -10,8 +10,10 @@ Users will be able to input their professional information and the information f
 ### Project Features
 * Register with an email and a password
 * Login with registered username and password
-* CREATE resume input items such as previous jobs, education, specialties etc.
+* CREATE and EDIT resume input items such as previous jobs, education, specialties etc.
 * DELETE  anything they can input and also the resume that is built.
+* READ a list of potental employers the user has applied to to keep track of their progress.
+* CREATE a customized resume using simple forms.
   
   [ERD](https://dbdiagram.io/d/62237c3854f9ad109a651a5d/)
   
